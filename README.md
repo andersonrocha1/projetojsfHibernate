@@ -9,7 +9,7 @@ Neste sistema apliquei os conhecimentos adquiridos através de um curso de Java 
 
     * Pessoas;
 
-    * Telefones
+    * Telefones;
 
     * E-mails (Aplicando Dialog);
     
