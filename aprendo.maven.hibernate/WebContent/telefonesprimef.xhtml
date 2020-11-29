@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"	
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Java Server Faces</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<p:breadCrumb>
+			<p:menuitem></p:menuitem>
+			<p:menuitem value="Página JSF" action="index.jsf"></p:menuitem>
+			<p:menuitem value="Página PrimeFaces" action="primeFaces.jsf"></p:menuitem>
+		
+		</p:breadCrumb>
+	
+	</h:form>
+
+	<h:form id="formCadastroTele">
+	<p:messages showDetail="true" showSummary="false" id="msg"></p:messages>
+	    <h1>Cadastro de Telefones</h1>
+	    
+	    <p:panelGrid columns="4">
+	    <p:outputLabel value="Usuário:"></p:outputLabel>
+	    <h:outputText value="#{telefonePessoaBean.user.nome}"></h:outputText>
+	    
+	    <p:outputLabel value="Número Movel :"></p:outputLabel>
+	    <p:inputMask mask="(99) 9 99999-9999" value="#{telefonePessoaBean.telefoneUser.numero}" required="true" requiredMessage="Informe um número!"></p:inputMask>
+	    
+	    <p:outputLabel value="Número Fixo :"></p:outputLabel>
+	    <p:inputMask mask="(99)9999-9999" value="#{telefonePessoaBean.telefoneUser.numerofixo}"></p:inputMask>
+	    
+	    <p:outputLabel value="Tipo Telefone:"></p:outputLabel>
+	 	<p:selectOneMenu value="#{telefonePessoaBean.telefoneUser.tipo}" required="true" 
+	 	requiredMessage="Informe o Tipo! Ex: Celular, Residencial ou Comercial" style="width:191px">
+	 		<f:selectItem itemValue="CELULAR PESSOAL" itemLabel="Celular"></f:selectItem>
+	 		<f:selectItem itemValue="COMERCIAL" itemLabel="Comercial"></f:selectItem>
+	 		<f:selectItem itemValue="RECADO" itemLabel="Recado"></f:selectItem>
+	 		<f:selectItem itemValue="TRABALHO" itemLabel="Trabalho"></f:selectItem>
+	 		<f:selectItem itemValue="WHATSAPP" itemLabel="Whatsapp"></f:selectItem>
+	 	
+	 	</p:selectOneMenu>
+	 	
+	 	<p:outputLabel value="Tipo Telefone:"></p:outputLabel>
+	 	<p:selectOneMenu value="#{telefonePessoaBean.telefoneUser.tipofixo}" required="true" 
+	 	requiredMessage="Informe o Tipo! Ex: Celular, Residencial ou Comercial" style="width:191px">
+	 	
+	 		<f:selectItem itemValue="RESIDENCIAL" itemLabel="Residencial"></f:selectItem>
+	 		<f:selectItem itemValue="COMERCIAL" itemLabel="Comercial"></f:selectItem>
+	 		<f:selectItem itemValue="RECADO" itemLabel="Recado"></f:selectItem>
+	 		<f:selectItem itemValue="TRABALHO" itemLabel="Trabalho"></f:selectItem>
+	 		
+	 	
+	 	</p:selectOneMenu>
+
+	    </p:panelGrid>
+	    <br></br>
+	   
+	    
+	    <p:commandButton id="btnSalvar" value="Salvar" action="#{telefonePessoaBean.salvar}" ajax="false"  title="Salvar">
+
+	    </p:commandButton>
+	    
+	  
+	</h:form>
+	<br></br>
+	<br></br>
+
+	
+	<h:form id="formTableFones">
+		<p:dataTable value="#{telefonePessoaBean.user.telefones_user}" var="usuTelefones" border="2" cellpadding="5">
+			<f:facet name="header">Lista de Telefones Cadastrados</f:facet>
+			<p:column headerText="ID" width="20">
+			<center>
+				<h:outputText value="#{usuTelefones.id}"></h:outputText>
+			</center>
+			</p:column>
+			
+			<p:column headerText="NÚMERO MÓVEL" width="60">
+
+				<h:outputText value="#{usuTelefones.numero}"></h:outputText>
+			</p:column>
+			
+			<p:column headerText="TIPO MÓVEL" width="70">
+				
+				<h:outputText value="#{usuTelefones.tipo}"></h:outputText>
+			</p:column>
+			
+			<p:column headerText="NÚMERO FIXO" width="60">
+
+				<h:outputText value="#{usuTelefones.numerofixo}"></h:outputText>
+			</p:column>
+
+			<p:column headerText="TIPO FIXO" width="70">
+				
+				<h:outputText value="#{usuTelefones.tipofixo}"></h:outputText>
+			</p:column>
+			
+			<p:column headerText="USUÁRIO" width="200">
+				
+				<h:outputText value="#{usuTelefones.usuariopessoa.nome}"></h:outputText>
+			</p:column>
+			
+			
+			<p:column headerText="EXCLUIR" width="40">
+	   			<center>
+	   			
+	   			<h:commandLink action="#{telefonePessoaBean.removerTelefone}" id="botaoDelFone" immediate="true" >
+	   				<f:setPropertyActionListener value="#{usuTelefones}" target="#{telefonePessoaBean.telefoneUser}">
+	   				
+	   				</f:setPropertyActionListener>
+	   				<h:graphicImage value="/resources/img/Excluir.png" title="Excluir"></h:graphicImage>
+	   				<f:ajax execute="botaoDelFone" render="@form :formCadastroTele:msg"></f:ajax>
+	   			</h:commandLink>
+	   			
+	   			</center>
+	   		</p:column>
+		
+		
+		</p:dataTable>
+	
+	
+	
+	</h:form>
+	
+	
+</h:body>
+
+</html>
+
