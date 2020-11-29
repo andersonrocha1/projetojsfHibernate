@@ -227,7 +227,7 @@
 			<p:column headerText="TELEFONES" width="90">
 			<center>
 			
-				<h:commandLink action="telefonesprimef.jsf" id="botaoTelefone" immediate="true">
+				<h:commandLink action="telefonesprimef" id="botaoTelefone" immediate="true">
 				<p:graphicImage value="/resources/img/telefone.png" title="Telefones"></p:graphicImage>
 				<f:param name="codigoUsers" value="#{usuPessoas.id}"></f:param>
 				</h:commandLink>
@@ -255,6 +255,8 @@
 		<p:dialog header="E-Mails" id="dialogEmail" widgetVar="dialogEmail" 
 		position="center" modal="true" width="570px">
 		
+		<f:facet name="header">Cadastro de E-Mails</f:facet>
+		
 			<p:panelGrid columns="3" >
 				<h:outputLabel value="E-MAIL:"></h:outputLabel>
 				<p:inputText id="campoEmail" value="#{usuarioPessoaBean.emailUser.email}" style="width:299px"></p:inputText>
@@ -264,7 +266,7 @@
 			
 			</p:commandButton>
 			</p:panelGrid>
-
+			<br></br>
 			<p:dataTable value="#{usuarioPessoaBean.usuPessoa.emails_user}" var="emailuser" id="dataEmails" style="width:540px">
 				<p:column headerText="ID" width="20">
 				

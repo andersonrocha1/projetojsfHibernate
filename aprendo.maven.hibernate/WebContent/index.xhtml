@@ -105,7 +105,7 @@
 	<br></br>
 	
 	<h:form id="formTable">
-		<h:dataTable value="#{usuarioPessoaBean.list}" var="usuPessoas" border="2" cellpadding="5">
+		<h:dataTable value="#{usuarioPessoaBean.list.list}" var="usuPessoas" border="2" cellpadding="5">
 			<f:facet name="header">Lista de Usuários Cadastrados</f:facet>
 			<h:column>
 				<f:facet name="header">ID</f:facet>
@@ -153,7 +153,7 @@
 	   		
 	   		<h:column>
 	   		<f:facet name="header">TELEFONES</f:facet>
-	   			<h:commandLink action="telefones.jsf" id="botaoTelefone" immediate="true">
+	   			<h:commandLink action="telefones" id="botaoTelefone" immediate="true">
 
 	   				<h:graphicImage value="/resources/img/telefone.png" title="Telefones"></h:graphicImage>
 	   				<f:param name="codigoUsers" value="#{usuPessoas.id}">

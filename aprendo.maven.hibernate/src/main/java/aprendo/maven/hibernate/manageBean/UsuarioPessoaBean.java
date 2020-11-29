@@ -215,9 +215,10 @@ public class UsuarioPessoaBean {
 		return "";
 	}
 	
-	public void limparCampos() {
+	public String limparCampos() {
 		
 		usuPessoa = new UsuarioPessoa();
+		return "";
 		
 	}
 	
